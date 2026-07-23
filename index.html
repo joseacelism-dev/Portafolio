@@ -814,6 +814,108 @@ h1, h2, h3, h4 {
   .evidence-heading { flex-direction:column; }
 }
 
+/* Ajustes responsive finales para computador, tablet y celular */
+html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+body { text-size-adjust: 100%; }
+main, section, header, footer, .container { min-width: 0; }
+p, h1, h2, h3, h4, a, span, strong, small, label, button, input, select, textarea, li {
+  overflow-wrap: anywhere;
+}
+.hero-grid, .diagnostic-grid, .about-grid, .faq-layout, .contact-grid,
+.problems-grid, .solutions-grid, .portfolio-grid, .benefits-grid,
+.process-timeline, .footer-grid, .form-grid {
+  min-width: 0;
+}
+.project-card, .solution-card, .problem-card, .benefit-card,
+.diagnostic-card, .contact-form, .modal-dialog, .profile-showcase,
+.dashboard-window, .banner-dashboard {
+  max-width: 100%;
+}
+.project-visual img, .project-evidence-cover, .evidence-image-button img {
+  max-width: 100%;
+}
+
+@media (min-width: 901px) and (max-width: 1180px) {
+  .container { width: min(calc(100% - 40px), var(--container)); }
+  .hero-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .problems-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .solutions-grid, .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-grid, .diagnostic-grid, .faq-layout { grid-template-columns: .9fr 1.1fr; gap: 34px; }
+  .about-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+@media (max-width: 900px) {
+  .site-header { height: var(--header-height); }
+  .navbar { gap: 12px; }
+  .brand { min-width: 0; }
+  .brand-text { white-space: normal; line-height: 1.15; }
+  .nav-menu { box-shadow: 0 20px 42px rgba(0,0,0,.25); }
+  .nav-menu.open { overflow-y: auto; max-height: calc(100vh - var(--header-height)); }
+  .hero { min-height: auto; }
+  .hero-grid { align-items: start; }
+  .hero-copy h1 { letter-spacing: 0; }
+  .hero-visual { width: 100%; overflow: hidden; }
+  .dashboard-window { width: min(100%, 560px); margin-inline: auto; }
+  .problem-card, .solution-card, .project-card, .benefit-card { min-height: auto; }
+  .process-timeline { gap: 16px; }
+  .contact-copy h2, .section-heading h2 { letter-spacing: 0; }
+}
+
+@media (max-width: 680px) {
+  :root { --header-height: 66px; }
+  .container { width: min(calc(100% - 22px), var(--container)); }
+  .section { padding: 54px 0; }
+  .section-heading h2 { font-size: clamp(1.75rem, 9vw, 2.45rem); }
+  .section-heading p { font-size: .98rem; }
+  .eyebrow { max-width: 100%; line-height: 1.35; }
+  .hero { padding-top: calc(var(--header-height) + 34px); }
+  .hero-copy { text-align: left; }
+  .hero-copy h1 { font-size: clamp(2rem, 11vw, 3rem); }
+  .hero-copy > p { margin-inline: 0; }
+  .hero-actions { justify-content: flex-start; }
+  .hero-actions .btn, .about-actions .btn, .modal-actions-sticky .btn { width: 100%; }
+  .hero-trust { justify-content: flex-start; gap: 10px; }
+  .hero-indicators { gap: 10px; }
+  .hero-indicators article { align-items: flex-start; padding: 14px; }
+  .hero-visual { min-height: auto; padding-top: 8px; }
+  .dashboard-body { grid-template-columns: 1fr; }
+  .mini-sidebar { display: none; }
+  .metric-row { grid-template-columns: 1fr; }
+  .flow-card { grid-template-columns: 1fr; }
+  .flow-card i { display: none; }
+  .floating-chip, .orbit { display: none; }
+  .filter-bar { margin-inline: -11px; padding-inline: 11px; scrollbar-width: thin; }
+  .project-content, .problem-card, .solution-card, .benefit-card { padding: 18px; }
+  .process-timeline { grid-template-columns: 1fr; }
+  .process-step-card { min-height: auto; }
+  .contact-copy { text-align: left; }
+  .contact-info article { align-items: flex-start; padding: 14px; }
+  .contact-form { padding: 16px; }
+  .btn, .filter-btn, input, select, textarea { max-width: 100%; }
+  .modal { padding: 10px; align-items: stretch; }
+  .modal-dialog { width: 100%; max-height: calc(100vh - 20px); padding: 18px; border-radius: 18px; }
+  .image-lightbox { padding: 12px; }
+  .image-lightbox img { max-width: 100%; max-height: 82vh; border-radius: 8px; }
+  .back-to-top { right: 14px; bottom: 84px; }
+  .whatsapp-float { right: 14px; bottom: 18px; }
+}
+
+@media (max-width: 420px) {
+  .brand-mark { width: 38px; height: 38px; border-radius: 10px; }
+  .brand-text { font-size: .82rem; }
+  .menu-toggle { width: 42px; }
+  .hero-copy h1 { font-size: clamp(1.85rem, 10.5vw, 2.45rem); }
+  .btn { min-height: 46px; padding: 12px 15px; }
+  .dashboard-window { border-radius: 18px; }
+  .window-bar { padding: 0 12px; }
+  .chart-card { height: 96px; }
+  .diagnostic-card { min-height: auto; padding: 16px; }
+  .diagnostic-option { min-height: auto; padding: 14px; }
+  .profile-showcase { padding: 16px; }
+  .profile-monogram { width: 92px; height: 92px; }
+  .footer-bottom { align-items: flex-start; text-align: left; }
+}
+
 </style>
 
   <script type="application/ld+json">
