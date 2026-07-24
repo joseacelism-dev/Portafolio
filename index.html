@@ -6,6 +6,12 @@
   <meta name="theme-color" content="#07182f">
   <meta name="description" content="José Alexis Celis Monsalve desarrolla aplicaciones, software empresarial y soluciones tecnológicas a la medida para mejorar inventarios, ventas, cartera y gestión empresarial.">
   <meta name="robots" content="index, follow">
+  <script>
+    (function () {
+      var isPhone = Math.min(screen.width || 0, window.innerWidth || 0) <= 760;
+      if (isPhone) document.documentElement.classList.add("is-phone");
+    })();
+  </script>
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_CO">
@@ -953,6 +959,189 @@ textarea { min-height: 130px; }
   .profile-monogram { width: 92px; height: 92px; }
   .footer-bottom { align-items: flex-start; text-align: left; }
 }
+
+/* Version movil real: evita que el celular muestre la pagina de escritorio encogida */
+.is-phone body { overflow-x: hidden; }
+.is-phone .container { width: min(calc(100% - 24px), 520px); }
+.is-phone .section { padding: 48px 0; }
+.is-phone .site-header { height: 64px; }
+.is-phone .navbar { gap: 10px; }
+.is-phone .brand { max-width: calc(100vw - 84px); }
+.is-phone .brand-mark { width: 38px; height: 38px; border-radius: 10px; }
+.is-phone .brand-text { max-width: 190px; font-size: .78rem; line-height: 1.12; white-space: normal; }
+.is-phone .menu-toggle { display: block; flex: 0 0 auto; width: 42px; height: 42px; }
+.is-phone .nav-menu {
+  position: fixed;
+  top: 64px;
+  right: 0;
+  left: 0;
+  display: grid;
+  gap: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 16px;
+  background: rgba(4,16,31,.98);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 22px 44px rgba(0,0,0,.28);
+  transition: max-height .35s ease, padding .35s ease;
+}
+.is-phone .nav-menu.open { max-height: calc(100vh - 64px); overflow-y: auto; padding: 10px 16px 18px; }
+.is-phone .nav-menu > a:not(.btn) { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+.is-phone .nav-menu > a:not(.btn)::after { display: none; }
+.is-phone .theme-toggle { width: 48px; height: 48px; margin-top: 12px; }
+.is-phone .btn-nav { display: inline-flex; width: 100%; margin-top: 12px; }
+
+.is-phone .hero {
+  min-height: auto;
+  padding: 96px 0 34px;
+}
+.is-phone .hero-grid {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  gap: 26px;
+}
+.is-phone .hero-copy { text-align: left; }
+.is-phone .hero-copy h1 {
+  max-width: 11ch;
+  margin-bottom: 18px;
+  font-size: clamp(2.05rem, 11vw, 3rem);
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+.is-phone .hero-copy > p {
+  max-width: 36ch;
+  margin-inline: 0;
+  margin-bottom: 22px;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.is-phone .hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.is-phone .hero-actions .btn { width: 100%; min-height: 50px; }
+.is-phone .hero-trust { display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 20px; }
+.is-phone .hero-visual {
+  min-height: auto;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+.is-phone .dashboard-window {
+  width: 100%;
+  max-width: 100%;
+  animation: none;
+  transform: none !important;
+  border-radius: 18px;
+}
+.is-phone .dashboard-body { grid-template-columns: 1fr; min-height: auto; }
+.is-phone .mini-sidebar { display: none; }
+.is-phone .dashboard-content { padding: 14px; }
+.is-phone .metric-row { grid-template-columns: 1fr; gap: 10px; }
+.is-phone .metric-row article { padding: 12px; }
+.is-phone .chart-card { height: 100px; }
+.is-phone .flow-card { grid-template-columns: 1fr; text-align: left; }
+.is-phone .flow-card i, .is-phone .flow-card span:last-child { display: none; }
+.is-phone .floating-chip, .is-phone .orbit { display: none; }
+.is-phone .hero-indicators {
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 26px;
+}
+.is-phone .hero-indicators article { min-height: auto; padding: 14px; }
+
+.is-phone .section-heading {
+  max-width: none;
+  margin-bottom: 28px;
+  text-align: left;
+}
+.is-phone .section-heading h2 {
+  font-size: clamp(1.85rem, 8.8vw, 2.55rem);
+  letter-spacing: 0;
+  line-height: 1.14;
+}
+.is-phone .section-heading p { font-size: .98rem; line-height: 1.65; }
+.is-phone .eyebrow { line-height: 1.35; }
+.is-phone .problems-grid,
+.is-phone .solutions-grid,
+.is-phone .portfolio-grid,
+.is-phone .benefits-grid,
+.is-phone .diagnostic-grid,
+.is-phone .about-grid,
+.is-phone .faq-layout,
+.is-phone .contact-grid,
+.is-phone .footer-grid,
+.is-phone .result-columns,
+.is-phone .modal-grid,
+.is-phone .form-grid {
+  grid-template-columns: 1fr !important;
+}
+.is-phone .problem-card,
+.is-phone .solution-card,
+.is-phone .project-card,
+.is-phone .benefit-card {
+  min-height: auto;
+  padding: 18px;
+  border-radius: 18px;
+}
+.is-phone .project-content { padding: 18px; }
+.is-phone .project-visual { aspect-ratio: 16 / 11; }
+.is-phone .filter-bar {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin-inline: -12px;
+  padding: 0 12px 8px;
+}
+.is-phone .filter-btn { flex: 0 0 auto; min-height: 42px; }
+
+.is-phone .diagnostic-intro,
+.is-phone .contact-copy,
+.is-phone .faq-layout .section-heading { text-align: left; }
+.is-phone .diagnostic-card { min-height: auto; padding: 18px; border-radius: 18px; }
+.is-phone .diagnostic-options { grid-template-columns: 1fr; }
+.is-phone .diagnostic-option { min-height: auto; padding: 14px; }
+.is-phone .process-timeline { grid-template-columns: 1fr !important; }
+.is-phone .process-timeline::before { display: none; }
+.is-phone .benefit-card { min-height: auto; }
+.is-phone .profile-showcase {
+  width: 100%;
+  min-height: auto;
+  padding: 18px;
+  transform: none !important;
+}
+.is-phone .profile-heading { grid-template-columns: 1fr; text-align: center; }
+.is-phone .profile-monogram { width: 92px; height: 92px; margin-inline: auto; }
+.is-phone .profile-positioning { justify-content: center; width: 100%; white-space: normal; text-align: center; }
+.is-phone .faq-intro-card { position: static; padding: 18px; border-radius: 18px; text-align: left; }
+.is-phone .contact-info { margin-inline: 0; }
+.is-phone .contact-info article { padding: 14px; }
+.is-phone .contact-form { padding: 16px; border-radius: 18px; }
+.is-phone .form-field-full { grid-column: auto; }
+.is-phone input,
+.is-phone select,
+.is-phone textarea,
+.is-phone .btn {
+  max-width: 100%;
+  font-size: 16px;
+}
+.is-phone .contact-form .btn,
+.is-phone .about-actions .btn,
+.is-phone .modal-actions-sticky .btn {
+  width: 100%;
+}
+.is-phone .footer-bottom { flex-direction: column; align-items: flex-start; text-align: left; }
+.is-phone .modal { align-items: stretch; padding: 10px; }
+.is-phone .modal-dialog { width: 100%; max-height: calc(100vh - 20px); padding: 18px; border-radius: 18px; }
+.is-phone .modal-highlight-row,
+.is-phone .module-grid,
+.is-phone .benefit-grid-modal,
+.is-phone .modal-fit-grid,
+.is-phone .solution-compare,
+.is-phone .solution-flow-grid {
+  grid-template-columns: 1fr !important;
+}
+.is-phone .evidence-gallery { grid-template-columns: 1fr; }
+.is-phone .whatsapp-float { right: 14px; bottom: 18px; width: 54px; height: 54px; justify-content: center; padding: 0; border-radius: 50%; }
+.is-phone .whatsapp-float span { display: none; }
+.is-phone .back-to-top { right: 14px; bottom: 84px; }
 
 </style>
 
