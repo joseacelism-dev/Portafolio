@@ -1603,8 +1603,8 @@ textarea { min-height: 130px; }
               <small class="field-error"></small>
             </div>
             <div class="form-field">
-              <label for="sector">Sector empresarial *</label>
-              <select id="sector" name="sector" required>
+              <label for="sector">Sector empresarial</label>
+              <select id="sector" name="sector">
                 <option value="">Seleccionar</option>
                 <option>Comercio y ventas</option>
                 <option>Industria y producción</option>
@@ -1615,13 +1615,13 @@ textarea { min-height: 130px; }
               <small class="field-error"></small>
             </div>
             <div class="form-field form-field-full">
-              <label for="problem">Problema que desea resolver *</label>
-              <input id="problem" name="problem" type="text" required minlength="10" placeholder="Ej.: no tenemos control actualizado del inventario">
+              <label for="problem">Problema que desea resolver</label>
+              <input id="problem" name="problem" type="text" minlength="10" placeholder="Ej.: no tenemos control actualizado del inventario">
               <small class="field-error"></small>
             </div>
             <div class="form-field">
-              <label for="solution">Solución de interés *</label>
-              <select id="solution" name="solution" required>
+              <label for="solution">Solución de interés</label>
+              <select id="solution" name="solution">
                 <option value="">Seleccionar</option>
                 <option>Sistema de inventarios</option>
                 <option>CRM y seguimiento comercial</option>
@@ -1645,16 +1645,12 @@ textarea { min-height: 130px; }
               <small class="field-error"></small>
             </div>
             <div class="form-field form-field-full">
-              <label for="message">Mensaje *</label>
-              <textarea id="message" name="message" rows="5" required minlength="20" placeholder="Explique brevemente cómo funciona actualmente el proceso y qué espera mejorar."></textarea>
+              <label for="message">Mensaje</label>
+              <textarea id="message" name="message" rows="5" minlength="20" placeholder="Explique brevemente cómo funciona actualmente el proceso y qué espera mejorar."></textarea>
               <small class="field-error"></small>
             </div>
           </div>
-          <label class="consent-check">
-            <input type="checkbox" id="privacy" name="privacy" required>
-            <span>Acepto el tratamiento de la información para responder esta solicitud. *</span>
-          </label>
-          <small class="field-error privacy-error"></small>
+          <p class="consent-check">Al enviar la solicitud, autorizas el uso de la información para responder y coordinar la cita.</p>
           <button class="btn btn-primary btn-block" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar solicitud</button>
           <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
           <!-- Integración futura: reemplace la simulación de script.js por Formspree, EmailJS, Supabase o una API propia. -->
@@ -2946,12 +2942,8 @@ function validateField(field) {
 
 function validateForm() {
   const fields = [...elements.contactForm.querySelectorAll("input:not([type='checkbox']), select, textarea")];
-  const privacy = elements.contactForm.querySelector("#privacy");
-  const privacyError = elements.contactForm.querySelector(".privacy-error");
   const validFields = fields.every(validateField);
-  const privacyValid = privacy.checked;
-  privacyError.textContent = privacyValid ? "" : "Debe aceptar el tratamiento de la información.";
-  return validFields && privacyValid;
+  return validFields;
 }
 
 async function handleFormSubmit(event) {
@@ -2977,12 +2969,12 @@ async function handleFormSubmit(event) {
     role: formData.get("role")?.trim() || null,
     email: formData.get("email")?.trim(),
     phone: formData.get("phone")?.trim(),
-    sector: formData.get("sector"),
-    problem: formData.get("problem")?.trim(),
-    solution: formData.get("solution"),
+    sector: formData.get("sector") || null,
+    problem: formData.get("problem")?.trim() || null,
+    solution: formData.get("solution") || null,
     budget: formData.get("budget") || null,
-    message: formData.get("message")?.trim(),
-    privacy_accepted: formData.get("privacy") === "on",
+    message: formData.get("message")?.trim() || null,
+    privacy_accepted: true,
     status: "pendiente",
     source_url: window.location.href
   };
