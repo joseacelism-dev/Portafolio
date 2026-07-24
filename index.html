@@ -815,7 +815,7 @@ h1, h2, h3, h4 {
 }
 
 /* Ajustes responsive finales para computador, tablet y celular */
-html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
 body { text-size-adjust: 100%; }
 main, section, header, footer, .container { min-width: 0; }
 p, h1, h2, h3, h4, a, span, strong, small, label, button, input, select, textarea, li {
@@ -834,6 +834,16 @@ p, h1, h2, h3, h4, a, span, strong, small, label, button, input, select, textare
 .project-visual img, .project-evidence-cover, .evidence-image-button img {
   max-width: 100%;
 }
+.btn, button, input, select, textarea { touch-action: manipulation; }
+input, select, textarea { min-height: 46px; }
+textarea { min-height: 130px; }
+
+@media (min-width: 1181px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.02fr) minmax(420px, .98fr); }
+  .problems-grid, .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .solutions-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .benefits-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
 
 @media (min-width: 901px) and (max-width: 1180px) {
   .container { width: min(calc(100% - 40px), var(--container)); }
@@ -842,6 +852,20 @@ p, h1, h2, h3, h4, a, span, strong, small, label, button, input, select, textare
   .solutions-grid, .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid, .diagnostic-grid, .faq-layout { grid-template-columns: .9fr 1.1fr; gap: 34px; }
   .about-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+
+@media (min-width: 681px) and (max-width: 900px) {
+  .container { width: min(calc(100% - 34px), var(--container)); }
+  .hero-copy, .diagnostic-intro, .contact-copy { text-align: left; }
+  .hero-actions, .hero-trust { justify-content: flex-start; }
+  .hero-grid, .diagnostic-grid, .about-grid, .faq-layout, .contact-grid { grid-template-columns: 1fr; }
+  .hero-visual { min-height: auto; }
+  .dashboard-window { max-width: 620px; transform: none; }
+  .problems-grid, .solutions-grid, .portfolio-grid, .benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .process-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-info { margin-inline: 0; }
+  .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
@@ -856,28 +880,38 @@ p, h1, h2, h3, h4, a, span, strong, small, label, button, input, select, textare
   .hero-copy h1 { letter-spacing: 0; }
   .hero-visual { width: 100%; overflow: hidden; }
   .dashboard-window { width: min(100%, 560px); margin-inline: auto; }
+  .dashboard-window, .project-banner-card, .profile-showcase { transform: none !important; }
   .problem-card, .solution-card, .project-card, .benefit-card { min-height: auto; }
   .process-timeline { gap: 16px; }
   .contact-copy h2, .section-heading h2 { letter-spacing: 0; }
+  .modal-close, .image-lightbox-close { min-width: 44px; min-height: 44px; }
 }
 
 @media (max-width: 680px) {
   :root { --header-height: 66px; }
   .container { width: min(calc(100% - 22px), var(--container)); }
   .section { padding: 54px 0; }
+  .section-heading { text-align: left; }
   .section-heading h2 { font-size: clamp(1.75rem, 9vw, 2.45rem); }
   .section-heading p { font-size: .98rem; }
   .eyebrow { max-width: 100%; line-height: 1.35; }
+  .site-header { backdrop-filter: blur(14px); }
+  .navbar { min-width: 0; }
+  .nav-menu { padding-inline: 16px; }
+  .nav-menu.open { padding: 10px 16px 18px; }
+  .nav-menu > a:not(.btn), .nav-menu .btn, .theme-toggle { min-height: 48px; }
+  .theme-toggle { width: 48px; height: 48px; }
   .hero { padding-top: calc(var(--header-height) + 34px); }
   .hero-copy { text-align: left; }
   .hero-copy h1 { font-size: clamp(2rem, 11vw, 3rem); }
   .hero-copy > p { margin-inline: 0; }
   .hero-actions { justify-content: flex-start; }
-  .hero-actions .btn, .about-actions .btn, .modal-actions-sticky .btn { width: 100%; }
+  .hero-actions .btn, .about-actions .btn, .modal-actions-sticky .btn, .contact-form .btn { width: 100%; }
   .hero-trust { justify-content: flex-start; gap: 10px; }
   .hero-indicators { gap: 10px; }
   .hero-indicators article { align-items: flex-start; padding: 14px; }
   .hero-visual { min-height: auto; padding-top: 8px; }
+  .dashboard-window { animation: none; }
   .dashboard-body { grid-template-columns: 1fr; }
   .mini-sidebar { display: none; }
   .metric-row { grid-template-columns: 1fr; }
@@ -888,12 +922,16 @@ p, h1, h2, h3, h4, a, span, strong, small, label, button, input, select, textare
   .project-content, .problem-card, .solution-card, .benefit-card { padding: 18px; }
   .process-timeline { grid-template-columns: 1fr; }
   .process-step-card { min-height: auto; }
+  .benefit-card { min-height: auto; }
+  .faq-layout .section-heading, .faq-intro-card { text-align: left; }
   .contact-copy { text-align: left; }
   .contact-info article { align-items: flex-start; padding: 14px; }
   .contact-form { padding: 16px; }
-  .btn, .filter-btn, input, select, textarea { max-width: 100%; }
+  .form-field label { font-size: .82rem; }
+  .btn, .filter-btn, input, select, textarea { max-width: 100%; font-size: 16px; }
   .modal { padding: 10px; align-items: stretch; }
   .modal-dialog { width: 100%; max-height: calc(100vh - 20px); padding: 18px; border-radius: 18px; }
+  .modal-solution-hero, .modal-section-card, .faq-intro-card { padding: 18px; border-radius: 18px; }
   .image-lightbox { padding: 12px; }
   .image-lightbox img { max-width: 100%; max-height: 82vh; border-radius: 8px; }
   .back-to-top { right: 14px; bottom: 84px; }
