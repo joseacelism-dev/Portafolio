@@ -545,11 +545,60 @@ h1, h2, h3, h4 { font-family: "Montserrat", sans-serif; line-height: 1.16; }
 .contact-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 54px; align-items: start; }
 .contact-copy h2 { font-size: clamp(2.1rem, 5vw, 3.5rem); }
 .contact-copy > p { color: #bfd2e3; }
-.contact-info { display: grid; gap: 12px; margin-top: 28px; }
-.contact-info article { display: flex; align-items: flex-start; gap: 12px; padding: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: 14px; }
-.contact-info i { display: grid; place-items: center; width: 38px; height: 38px; color: var(--turquoise-300); background: rgba(24,205,181,.1); border-radius: 10px; }
-.contact-info strong, .contact-info span { display: block; }
-.contact-info span { color: #aac0d4; font-size: .8rem; overflow-wrap: anywhere; }
+.contact-visual {
+  position: relative;
+  margin-top: 30px;
+  min-height: 360px;
+  border: 1px solid rgba(117,216,255,.20);
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 28px 70px rgba(0,0,0,.34);
+  isolation: isolate;
+}
+.contact-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(3,14,32,0) 45%, rgba(3,14,32,.72) 100%),
+    radial-gradient(circle at 18% 12%, rgba(24,205,181,.20), transparent 36%);
+  pointer-events: none;
+  z-index: 1;
+}
+.contact-visual img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  display: block;
+  object-fit: cover;
+  object-position: 48% center;
+  transform: scale(1.01);
+}
+.contact-visual-caption {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  padding: 16px;
+  background: rgba(4,16,31,.58);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+}
+.contact-visual-caption strong {
+  color: var(--white);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+.contact-visual-caption span {
+  color: #c5d9ea;
+  font-size: .84rem;
+  line-height: 1.45;
+}
 .contact-form { padding: 28px; color: var(--text); background: var(--surface); border-radius: var(--radius-lg); box-shadow: 0 30px 80px rgba(0,0,0,.3); }
 .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 15px; }
 .form-field-full { grid-column: 1 / -1; }
@@ -697,7 +746,7 @@ h1, h2, h3, h4 { font-family: "Montserrat", sans-serif; line-height: 1.16; }
   .faq-assurance-list { max-width: 430px; margin-inline: auto; text-align: left; }
   .contact-grid { gap: 36px; }
   .contact-copy { text-align: center; }
-  .contact-info { max-width: 560px; margin-inline: auto; text-align: left; }
+  .contact-visual { max-width: 620px; margin-inline: auto; text-align: left; }
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -884,7 +933,7 @@ textarea { min-height: 130px; }
   .problems-grid, .solutions-grid, .portfolio-grid, .benefits-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .process-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .contact-info { margin-inline: 0; }
+  .contact-visual { margin-inline: 0; }
   .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -945,7 +994,8 @@ textarea { min-height: 130px; }
   .benefit-card { min-height: auto; }
   .faq-layout .section-heading, .faq-intro-card { text-align: left; }
   .contact-copy { text-align: left; }
-  .contact-info article { align-items: flex-start; padding: 14px; }
+  .contact-visual { min-height: 310px; border-radius: 22px; }
+  .contact-visual img { min-height: 310px; }
   .contact-form { padding: 16px; }
   .form-field label { font-size: .82rem; }
   .btn, .filter-btn, input, select, textarea { max-width: 100%; font-size: 16px; }
@@ -1174,8 +1224,24 @@ textarea { min-height: 130px; }
 .is-phone .profile-monogram { width: 92px; height: 92px; margin-inline: auto; }
 .is-phone .profile-positioning { justify-content: center; width: 100%; white-space: normal; text-align: center; }
 .is-phone .faq-intro-card { position: static; padding: 18px; border-radius: 18px; text-align: left; }
-.is-phone .contact-info { margin-inline: 0; }
-.is-phone .contact-info article { padding: 14px; }
+.is-phone .contact-visual {
+  min-height: 260px;
+  margin-top: 22px;
+  border-radius: 18px;
+}
+.is-phone .contact-visual img {
+  min-height: 260px;
+  object-position: 52% center;
+}
+.is-phone .contact-visual-caption {
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 13px;
+  border-radius: 14px;
+}
+.is-phone .contact-visual-caption strong { font-size: .92rem; }
+.is-phone .contact-visual-caption span { font-size: .78rem; }
 .is-phone .contact-form { padding: 16px; border-radius: 18px; }
 .is-phone .form-field-full { grid-column: auto; }
 .is-phone input,
@@ -1500,10 +1566,12 @@ textarea { min-height: 130px; }
           <span class="eyebrow">Contacto</span>
           <h2 id="contactTitle">Cuéntanos qué necesita resolver tu empresa</h2>
           <p>Describe el proceso, dificultad o resultado que deseas mejorar. La información permitirá orientar una conversación inicial.</p>
-          <div class="contact-info">
-            <article><i class="fa-solid fa-envelope"></i><div><strong>Correo editable</strong><span>Josea.celism@gmail.com</span></div></article>
-            <article><i class="fa-solid fa-location-dot"></i><div><strong>Cobertura</strong><span>Colombia y Latinoamérica</span></div></article>
-            <article><i class="fa-solid fa-comments"></i><div><strong>Modalidad</strong><span>Asesoría virtual o presencial según disponibilidad</span></div></article>
+          <div class="contact-visual" aria-label="Transformación digital aplicada a procesos empresariales">
+            <img src="assets/contacto-transformacion-digital.png" alt="Ejecutivo analizando un panel digital de inventarios, ventas, automatización e indicadores empresariales" loading="lazy" width="1792" height="1024">
+            <div class="contact-visual-caption">
+              <strong>Convierte tus procesos en decisiones inteligentes</strong>
+              <span>Integramos datos, automatización e indicadores para que tu empresa trabaje con más control.</span>
+            </div>
           </div>
         </div>
 
