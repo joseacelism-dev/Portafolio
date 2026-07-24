@@ -239,17 +239,27 @@ h1, h2, h3, h4 { font-family: "Montserrat", sans-serif; line-height: 1.16; }
 .hero-indicators strong, .hero-indicators span { display: block; }
 .hero-indicators span { color: #a9bfd4; font-size: .78rem; }
 
-.problems-section { background: var(--surface-alt); }
+.problems-section { background: radial-gradient(circle at 12% 12%, rgba(0,140,255,.1), transparent 34%), linear-gradient(180deg, var(--surface-alt), var(--surface)); }
+.problem-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: -10px 0 26px; }
+.problem-tab { display: inline-flex; align-items: center; gap: 8px; min-height: 42px; padding: 10px 14px; color: var(--text-muted); background: var(--surface); border: 1px solid var(--border); border-radius: 999px; box-shadow: var(--shadow-sm); font-weight: 800; cursor: pointer; transition: var(--transition); }
+.problem-tab i { color: var(--problem-color, var(--blue-500)); }
+.problem-tab.active, .problem-tab:hover { color: var(--text); border-color: color-mix(in srgb, var(--problem-color, var(--blue-500)) 42%, var(--border)); box-shadow: 0 14px 34px rgba(2, 15, 32, .1); transform: translateY(-2px); }
 .problems-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.problem-card { display: flex; flex-direction: column; min-height: 310px; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
-.problem-card:hover { transform: translateY(-7px); border-color: rgba(239,78,90,.3); box-shadow: var(--shadow-md); }
+.problem-card { position: relative; display: flex; flex-direction: column; min-height: 326px; overflow: hidden; padding: 24px; background: linear-gradient(180deg, color-mix(in srgb, var(--problem-color, var(--blue-500)) 8%, var(--surface)), var(--surface) 42%); border: 1px solid color-mix(in srgb, var(--problem-color, var(--blue-500)) 22%, var(--border)); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); }
+.problem-card::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--problem-color, var(--blue-500)); }
+.problem-card:hover, .problem-card.is-active { transform: translateY(-7px); border-color: color-mix(in srgb, var(--problem-color, var(--blue-500)) 48%, var(--border)); box-shadow: var(--shadow-md); }
+.problem-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 18px; }
+.problem-tag { display: inline-flex; align-items: center; min-height: 30px; padding: 6px 10px; color: color-mix(in srgb, var(--problem-color, var(--blue-500)) 72%, var(--text)); background: color-mix(in srgb, var(--problem-color, var(--blue-500)) 12%, transparent); border: 1px solid color-mix(in srgb, var(--problem-color, var(--blue-500)) 26%, transparent); border-radius: 999px; font-size: .72rem; font-weight: 900; text-transform: uppercase; }
 .card-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 20px; color: var(--blue-500); background: rgba(0,140,255,.1); border-radius: 14px; font-size: 1.15rem; }
-.problem-card .card-icon { color: var(--red-500); background: rgba(239,78,90,.1); }
+.problem-card .card-icon { width: 56px; height: 56px; margin-bottom: 0; color: var(--problem-color, var(--red-500)); background: color-mix(in srgb, var(--problem-color, var(--red-500)) 13%, transparent); border-radius: 16px; font-size: 1.25rem; }
 .problem-card h3 { margin-bottom: 9px; font-size: 1.1rem; }
 .problem-card p { color: var(--text-muted); font-size: .91rem; }
-.problem-card .consequence { padding: 10px 12px; color: #b72f3b; background: rgba(239,78,90,.08); border-left: 3px solid var(--red-500); border-radius: 8px; font-size: .82rem; }
+.problem-card .consequence { margin: 16px 0; padding: 12px 14px; color: color-mix(in srgb, var(--problem-color, var(--red-500)) 76%, var(--text)); background: color-mix(in srgb, var(--problem-color, var(--red-500)) 9%, var(--surface)); border-left: 3px solid var(--problem-color, var(--red-500)); border-radius: 10px; font-size: .82rem; }
+.problem-impact { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; margin-top: auto; padding: 12px 0 0; border-top: 1px solid var(--border); color: var(--text-muted); font-size: .8rem; font-weight: 700; }
+.problem-impact strong { color: var(--text); }
+.problem-impact i { display: grid; place-items: center; width: 28px; height: 28px; color: var(--white); background: var(--problem-color, var(--blue-500)); border-radius: 50%; font-size: .78rem; }
 [data-theme="dark"] .problem-card .consequence { color: #ffabb2; }
-.problem-card .btn { margin-top: auto; align-self: flex-start; }
+.problem-card .btn { margin-top: 18px; align-self: flex-start; }
 
 .solutions-section { background: linear-gradient(155deg, var(--navy-950), var(--navy-800)); }
 .solutions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -773,8 +783,9 @@ h1, h2, h3, h4 { font-family: "Montserrat", sans-serif; line-height: 1.16; }
   .hero-indicators, .problems-grid, .solutions-grid, .portfolio-grid, .benefits-grid, .stats-panel, .result-columns, .modal-grid { grid-template-columns: 1fr; }
   .hero-indicators article { min-height: 72px; }
   .solution-card ul { grid-template-columns: 1fr; }
-  .filter-bar { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; }
+  .filter-bar, .problem-switcher { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 8px; }
   .filter-btn { flex: 0 0 auto; }
+  .problem-tab { flex: 0 0 auto; }
   .diagnostic-card { min-height: 420px; padding: 22px; border-radius: 22px; }
   .diagnostic-options { grid-template-columns: 1fr; }
   .diagnostic-option { min-height: 88px; }
@@ -986,7 +997,7 @@ textarea { min-height: 130px; }
   .flow-card { grid-template-columns: 1fr; }
   .flow-card i { display: none; }
   .floating-chip, .orbit { display: none; }
-  .filter-bar { margin-inline: -11px; padding-inline: 11px; scrollbar-width: thin; }
+  .filter-bar, .problem-switcher { margin-inline: -11px; padding-inline: 11px; scrollbar-width: thin; }
   .project-content, .problem-card, .solution-card, .benefit-card { padding: 18px; }
   .process-timeline { grid-template-columns: 1fr; }
   .process-step-card { min-height: auto; }
@@ -1195,6 +1206,21 @@ textarea { min-height: 130px; }
 }
 .is-phone .project-content { padding: 18px; }
 .is-phone .project-visual { aspect-ratio: 16 / 11; }
+.is-phone .problem-switcher {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: -4px -12px 20px;
+  padding: 0 12px 10px;
+}
+.is-phone .problem-tab { flex: 0 0 auto; min-height: 40px; padding: 9px 12px; font-size: .78rem; }
+.is-phone .problem-card { display: none; padding: 22px; border-radius: 22px; }
+.is-phone .problem-card.is-active { display: flex; transform: none; }
+.is-phone .problem-card-head { align-items: center; }
+.is-phone .problem-card .card-icon { width: 54px; height: 54px; }
+.is-phone .problem-card h3 { font-size: 1.35rem; line-height: 1.22; }
+.is-phone .problem-card p { font-size: .96rem; line-height: 1.65; }
+.is-phone .problem-card .btn { width: 100%; justify-content: center; }
 .is-phone .filter-bar {
   justify-content: flex-start;
   flex-wrap: nowrap;
@@ -1393,6 +1419,7 @@ textarea { min-height: 130px; }
           <h2 id="problemsTitle">¿Qué problema necesita resolver tu empresa?</h2>
           <p>Selecciona una situación para conocer su impacto y la solución tecnológica recomendada.</p>
         </div>
+        <div class="problem-switcher reveal" id="problemSwitcher" role="tablist" aria-label="Seleccionar tipo de problema"></div>
         <div class="problems-grid" id="problemsGrid"></div>
       </div>
     </section>
@@ -1841,16 +1868,16 @@ const solutions = [
 ];
 
 const problems = [
-  { title: "Inventario descontrolado", icon: "fa-boxes-stacked", description: "Las existencias reales no coinciden con los registros o se conocen demasiado tarde.", consequence: "Consecuencia: faltantes, compras innecesarias y pérdida de ventas.", solutionId: "inventarios" },
-  { title: "Ventas sin seguimiento", icon: "fa-user-clock", description: "No existe una ruta clara para clientes, cotizaciones y oportunidades abiertas.", consequence: "Consecuencia: clientes olvidados y oportunidades perdidas.", solutionId: "crm" },
-  { title: "Cartera vencida", icon: "fa-money-bill-trend-up", description: "Los vencimientos y abonos se controlan manualmente o en archivos separados.", consequence: "Consecuencia: presión sobre la liquidez y cobros tardíos.", solutionId: "ventas-cartera" },
-  { title: "Información empresarial dispersa", icon: "fa-folder-tree", description: "Ventas, inventarios, cartera y tareas se administran en archivos y sistemas separados.", consequence: "Consecuencia: duplicidad, versiones contradictorias y reprocesos.", solutionId: "automatizacion" },
-  { title: "Procesos manuales y repetitivos", icon: "fa-repeat", description: "El equipo repite digitación, consolidación y envío de la misma información.", consequence: "Consecuencia: menor productividad y mayor exposición a errores.", solutionId: "automatizacion" },
-  { title: "Falta de indicadores de gestión", icon: "fa-chart-line", description: "Los reportes llegan tarde o no muestran claramente tendencias, metas y cumplimiento.", consequence: "Consecuencia: decisiones reactivas y baja capacidad de anticipación.", solutionId: "indicadores" },
-  { title: "Errores en pedidos y facturación", icon: "fa-file-circle-exclamation", description: "La información se transcribe varias veces entre ventas, bodega y administración.", consequence: "Consecuencia: devoluciones, ajustes y pérdida de tiempo.", solutionId: "ventas-cartera" },
-  { title: "Gestión inadecuada de clientes", icon: "fa-address-book", description: "Los datos de contacto, conversaciones y compromisos no están centralizados.", consequence: "Consecuencia: atención inconsistente y baja continuidad comercial.", solutionId: "crm" },
-  { title: "Documentos y aprobaciones desorganizados", icon: "fa-folder-open", description: "No hay una estructura única para versiones, responsables, fechas y autorizaciones.", consequence: "Consecuencia: búsquedas lentas, omisiones y retrasos administrativos.", solutionId: "automatizacion" },
-  { title: "Falta de control sobre tareas y proyectos", icon: "fa-list-check", description: "Responsables, avances, prioridades y fechas se gestionan sin visibilidad compartida.", consequence: "Consecuencia: retrasos y dificultad para evaluar el cumplimiento.", solutionId: "indicadores" }
+  { title: "Inventario descontrolado", area: "Operación", color: "#008cff", icon: "fa-boxes-stacked", description: "Las existencias reales no coinciden con los registros o se conocen demasiado tarde.", consequence: "Faltantes, compras innecesarias y pérdida de ventas.", impact: "Control operativo en tiempo real", solutionId: "inventarios" },
+  { title: "Ventas sin seguimiento", area: "Comercial", color: "#18cdb5", icon: "fa-user-clock", description: "No existe una ruta clara para clientes, cotizaciones y oportunidades abiertas.", consequence: "Clientes olvidados y oportunidades perdidas.", impact: "Mayor continuidad comercial", solutionId: "crm" },
+  { title: "Cartera vencida", area: "Finanzas", color: "#f59e0b", icon: "fa-money-bill-trend-up", description: "Los vencimientos y abonos se controlan manualmente o en archivos separados.", consequence: "Presión sobre la liquidez y cobros tardíos.", impact: "Recaudo más visible y oportuno", solutionId: "ventas-cartera" },
+  { title: "Información empresarial dispersa", area: "Datos", color: "#7c3aed", icon: "fa-folder-tree", description: "Ventas, inventarios, cartera y tareas se administran en archivos y sistemas separados.", consequence: "Duplicidad, versiones contradictorias y reprocesos.", impact: "Información centralizada", solutionId: "automatizacion" },
+  { title: "Procesos manuales y repetitivos", area: "Productividad", color: "#ef4e5a", icon: "fa-repeat", description: "El equipo repite digitación, consolidación y envío de la misma información.", consequence: "Menor productividad y mayor exposición a errores.", impact: "Menos tareas repetitivas", solutionId: "automatizacion" },
+  { title: "Falta de indicadores de gestión", area: "Decisiones", color: "#0ea5e9", icon: "fa-chart-line", description: "Los reportes llegan tarde o no muestran claramente tendencias, metas y cumplimiento.", consequence: "Decisiones reactivas y baja capacidad de anticipación.", impact: "Lectura rápida del desempeño", solutionId: "indicadores" },
+  { title: "Errores en pedidos y facturación", area: "Ventas", color: "#22c55e", icon: "fa-file-circle-exclamation", description: "La información se transcribe varias veces entre ventas, bodega y administración.", consequence: "Devoluciones, ajustes y pérdida de tiempo.", impact: "Pedidos con menos reprocesos", solutionId: "ventas-cartera" },
+  { title: "Gestión inadecuada de clientes", area: "Clientes", color: "#06b6d4", icon: "fa-address-book", description: "Los datos de contacto, conversaciones y compromisos no están centralizados.", consequence: "Atención inconsistente y baja continuidad comercial.", impact: "Relaciones comerciales ordenadas", solutionId: "crm" },
+  { title: "Documentos y aprobaciones desorganizados", area: "Administración", color: "#8b5cf6", icon: "fa-folder-open", description: "No hay una estructura única para versiones, responsables, fechas y autorizaciones.", consequence: "Búsquedas lentas, omisiones y retrasos administrativos.", impact: "Aprobaciones trazables", solutionId: "automatizacion" },
+  { title: "Falta de control sobre tareas y proyectos", area: "Gestión", color: "#14b8a6", icon: "fa-list-check", description: "Responsables, avances, prioridades y fechas se gestionan sin visibilidad compartida.", consequence: "Retrasos y dificultad para evaluar el cumplimiento.", impact: "Seguimiento claro de compromisos", solutionId: "indicadores" }
 ];
 
 const projects = [
@@ -2026,6 +2053,7 @@ const faqs = [
    REFERENCIAS DEL DOM
    ========================================================= */
 const elements = {
+  problemSwitcher: document.querySelector("#problemSwitcher"),
   problemsGrid: document.querySelector("#problemsGrid"),
   solutionsGrid: document.querySelector("#solutionsGrid"),
   portfolioGrid: document.querySelector("#portfolioGrid"),
@@ -2116,13 +2144,27 @@ function iconMarkup(icon, prefix = "fa-solid") {
    RENDERIZADO DE CONTENIDO
    ========================================================= */
 function renderProblems() {
-  elements.problemsGrid.innerHTML = problems.map((problem) => `
-    <article class="problem-card reveal">
-      <div class="card-icon">${iconMarkup(problem.icon)}</div>
+  elements.problemSwitcher.innerHTML = problems.map((problem, index) => `
+    <button class="problem-tab ${index === 0 ? "active" : ""}" type="button" role="tab" aria-selected="${index === 0}" data-problem-index="${index}" style="--problem-color:${problem.color}">
+      ${iconMarkup(problem.icon)}
+      <span>${problem.area}</span>
+    </button>
+  `).join("");
+
+  elements.problemsGrid.innerHTML = problems.map((problem, index) => `
+    <article class="problem-card reveal ${index === 0 ? "is-active" : ""}" data-problem-card="${index}" style="--problem-color:${problem.color}">
+      <div class="problem-card-head">
+        <div class="card-icon">${iconMarkup(problem.icon)}</div>
+        <span class="problem-tag">${problem.area}</span>
+      </div>
       <h3>${problem.title}</h3>
       <p>${problem.description}</p>
-      <p class="consequence">${problem.consequence}</p>
-      <button class="btn btn-outline btn-sm" type="button" data-solution-id="${problem.solutionId}">Ver solución</button>
+      <p class="consequence"><strong>Impacto:</strong> ${problem.consequence}</p>
+      <div class="problem-impact">
+        ${iconMarkup("fa-arrow-trend-up")}
+        <span><strong>Enfoque:</strong> ${problem.impact}</span>
+      </div>
+      <button class="btn btn-outline btn-sm" type="button" data-solution-id="${problem.solutionId}">Ver solución recomendada</button>
     </article>
   `).join("");
 }
@@ -2655,6 +2697,25 @@ function setupFilters() {
         const categories = card.dataset.categories?.split(" ") ?? [];
         card.hidden = filter !== "todos" && !categories.includes(filter);
       });
+    });
+  });
+}
+
+function setupProblemTabs() {
+  if (!elements.problemSwitcher || !elements.problemsGrid) return;
+
+  elements.problemSwitcher.addEventListener("click", (event) => {
+    const tab = event.target.closest("[data-problem-index]");
+    if (!tab) return;
+
+    const activeIndex = tab.dataset.problemIndex;
+    elements.problemSwitcher.querySelectorAll("[data-problem-index]").forEach((item) => {
+      const isActive = item.dataset.problemIndex === activeIndex;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-selected", String(isActive));
+    });
+    elements.problemsGrid.querySelectorAll("[data-problem-card]").forEach((card) => {
+      card.classList.toggle("is-active", card.dataset.problemCard === activeIndex);
     });
   });
 }
@@ -3263,6 +3324,7 @@ function init() {
   applyIntegratedIcons();
 
   setupFilters();
+  setupProblemTabs();
   setupTheme();
   setupNavigation();
   setupScrollEffects();
