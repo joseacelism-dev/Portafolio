@@ -407,13 +407,14 @@ h1, h2, h3, h4 { font-family: "Montserrat", sans-serif; line-height: 1.16; }
 .diagnostic-option { display: grid; grid-template-columns: 32px minmax(0, 1fr); align-items: start; column-gap: 12px; min-height: 112px; padding: 17px; text-align: left; color: var(--text); background: var(--surface-alt); border: 1px solid var(--border); border-radius: 14px; transition: var(--transition); }
 .diagnostic-option:hover { border-color: var(--blue-500); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
 .diagnostic-option.selected { border-color: var(--blue-500); background: rgba(0,140,255,.08); }
-.option-score { grid-row: 1 / span 2; display: grid; place-items: center; width: 30px; height: 30px; color: var(--white); background: var(--gray-600); border-radius: 50%; font-size: .72rem; font-weight: 900; }
+.option-score { position: static !important; grid-column: 1; grid-row: 1; display: grid; place-items: center; width: 30px; height: 30px; color: var(--white); background: var(--gray-600); border-radius: 50%; font-size: .72rem; font-weight: 900; transform: none !important; }
 .diagnostic-option[data-score="0"] .option-score { background: var(--red-500); }
 .diagnostic-option[data-score="1"] .option-score { background: #e99b17; }
 .diagnostic-option[data-score="2"] .option-score { background: var(--blue-500); }
 .diagnostic-option[data-score="3"] .option-score { background: var(--turquoise-500); }
-.diagnostic-option strong { display: block; grid-column: 2; margin-bottom: 5px; line-height: 1.35; }
-.diagnostic-option span:not(.option-score) { grid-column: 2; color: var(--text-muted); font-size: .8rem; line-height: 1.5; }
+.diagnostic-option-copy { grid-column: 2; min-width: 0; }
+.diagnostic-option-copy strong { display: block; margin-bottom: 5px; line-height: 1.35; overflow-wrap: anywhere; }
+.diagnostic-option-copy span { display: block; color: var(--text-muted); font-size: .8rem; line-height: 1.5; overflow-wrap: anywhere; }
 .diagnostic-navigation { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 20px; }
 .diagnostic-navigation .btn[disabled] { opacity: .45; cursor: not-allowed; }
 .muted-small { color: var(--text-muted); font-size: .74rem; }
@@ -2764,8 +2765,10 @@ function renderDiagnosticQuestion() {
         ${diagnosticOptions.map((option) => `
           <button class="diagnostic-option ${selectedScore === option.score ? "selected" : ""}" type="button" data-diagnostic-score="${option.score}" aria-pressed="${selectedScore === option.score}">
             <span class="option-score" aria-hidden="true">${option.score}</span>
-            <strong>${option.label}</strong>
-            <span>${option.description}</span>
+            <span class="diagnostic-option-copy">
+              <strong>${option.label}</strong>
+              <span>${option.description}</span>
+            </span>
           </button>
         `).join("")}
       </div>
