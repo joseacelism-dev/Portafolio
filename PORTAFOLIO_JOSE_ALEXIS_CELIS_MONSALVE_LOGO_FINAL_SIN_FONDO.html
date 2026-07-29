@@ -2500,6 +2500,14 @@ function createProductVisualSvg(project, variant = 0) {
 
 function getProjectVisuals(project) {
   if (project.screenshots?.length) return project.screenshots;
+  if (project.id?.startsWith("product-")) {
+    const slug = project.id.replace("product-", "");
+    return [
+      { src: `assets/productos/${slug}-principal.png`, title: "Vista general", caption: `Panel principal propuesto para ${project.title}.` },
+      { src: `assets/productos/${slug}-flujo.png`, title: "Flujo de trabajo", caption: "Organización de módulos, estados y responsables de la solución." },
+      { src: `assets/productos/${slug}-indicadores.png`, title: "Indicadores", caption: "Resumen visual de métricas, alertas y seguimiento operativo." }
+    ];
+  }
   return [
     { src: createProductVisualSvg(project, 0), title: "Vista general", caption: `Panel principal propuesto para ${project.title}.` },
     { src: createProductVisualSvg(project, 1), title: "Flujo de trabajo", caption: "Organización de módulos, estados y responsables de la solución." },
