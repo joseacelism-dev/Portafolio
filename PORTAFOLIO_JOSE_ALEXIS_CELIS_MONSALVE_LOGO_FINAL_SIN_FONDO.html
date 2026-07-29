@@ -1439,16 +1439,21 @@ textarea { min-height: 130px; }
     <section class="section portfolio-section" id="portafolio" data-view-section="portafolio" aria-labelledby="portfolioTitle">
       <div class="container">
         <div class="section-heading reveal">
-          <span class="eyebrow">Portafolio de soluciones</span>
-          <h2 id="portfolioTitle">Productos digitales para inventarios, ventas y gestión empresarial</h2>
-          <p>Soluciones tecnológicas para digitalizar el control de inventarios, las ventas, la cartera y los procesos de gestión empresarial.</p>
+          <span class="eyebrow">Catálogo de productos tecnológicos</span>
+          <h2 id="portfolioTitle">Soluciones listas para adaptar a diferentes áreas de la empresa</h2>
+          <p>Productos digitales para controlar inventarios, ventas, cartera, citas, documentos, indicadores y procesos operativos desde herramientas claras y escalables.</p>
         </div>
 
         <div class="filter-bar reveal" role="group" aria-label="Filtrar proyectos">
           <button class="filter-btn active" type="button" data-filter="todos" aria-pressed="true">Todos</button>
           <button class="filter-btn" type="button" data-filter="inventarios" aria-pressed="false">Inventarios</button>
-          <button class="filter-btn" type="button" data-filter="ventas" aria-pressed="false">Ventas y cartera</button>
-          <button class="filter-btn" type="button" data-filter="gestion" aria-pressed="false">Gestión empresarial</button>
+          <button class="filter-btn" type="button" data-filter="ventas" aria-pressed="false">Ventas y CRM</button>
+          <button class="filter-btn" type="button" data-filter="cartera" aria-pressed="false">Cartera y pagos</button>
+          <button class="filter-btn" type="button" data-filter="gestion" aria-pressed="false">Procesos</button>
+          <button class="filter-btn" type="button" data-filter="indicadores" aria-pressed="false">Indicadores</button>
+          <button class="filter-btn" type="button" data-filter="operacion" aria-pressed="false">Operación</button>
+          <button class="filter-btn" type="button" data-filter="servicio" aria-pressed="false">Servicio</button>
+          <button class="filter-btn" type="button" data-filter="talento" aria-pressed="false">Talento y académico</button>
         </div>
 
         <div class="portfolio-grid" id="portfolioGrid" aria-live="polite"></div>
@@ -1979,6 +1984,309 @@ const projects = [
     }
 ];
 
+const productCatalog = [
+  {
+    id: "product-inventarios",
+    title: "Sistema de inventarios",
+    sector: "Operación, comercio y producción",
+    category: ["inventarios", "operacion"],
+    badge: "Control operativo",
+    problem: "Las existencias, entradas, salidas y responsables se controlan manualmente o en archivos separados, generando diferencias y poca trazabilidad.",
+    solution: "Sistema centralizado para registrar movimientos, controlar saldos, gestionar proveedores, recibir alertas de stock y consultar reportes operativos.",
+    modules: ["Existencias", "Entradas y salidas", "Alertas de stock", "Proveedores", "Reportes"],
+    benefits: ["Inventario actualizado", "Menos faltantes", "Compras mejor planeadas", "Trazabilidad por movimiento"],
+    technologies: ["Aplicación web", "Base de datos", "Reportes", "Roles de usuario"],
+    description: "Controla productos, materiales, movimientos, alertas y proveedores desde una sola herramienta.",
+    evidenceIntro: "Visualización propuesta para un sistema de inventarios adaptable a operación, comercio o producción.",
+    color: "008cff"
+  },
+  {
+    id: "product-crm",
+    title: "CRM y seguimiento comercial",
+    sector: "Ventas y relación con clientes",
+    category: ["ventas", "gestion"],
+    badge: "Gestión comercial",
+    problem: "Los clientes, cotizaciones, llamadas y oportunidades quedan dispersos en conversaciones, agendas o archivos sin continuidad.",
+    solution: "CRM para centralizar contactos, oportunidades, historial comercial, tareas de seguimiento y estado de cada negociación.",
+    modules: ["Clientes", "Oportunidades", "Cotizaciones", "Seguimientos", "Embudo comercial"],
+    benefits: ["Clientes mejor atendidos", "Menos oportunidades perdidas", "Historial centralizado", "Priorización comercial"],
+    technologies: ["Aplicación web", "Automatización", "Tableros", "Notificaciones"],
+    description: "Ordena clientes, oportunidades, cotizaciones y seguimientos para vender con más control.",
+    evidenceIntro: "Visualización propuesta para seguimiento comercial y relación con clientes.",
+    color: "18cdb5"
+  },
+  {
+    id: "product-ventas-cartera",
+    title: "Sistema de ventas y cartera",
+    sector: "Facturación, recaudo y cuentas por cobrar",
+    category: ["ventas", "cartera"],
+    badge: "Ventas y recaudo",
+    problem: "Las ventas, abonos, vencimientos y estados de pago se revisan tarde o dependen de registros manuales.",
+    solution: "Herramienta para registrar ventas, consultar cartera, controlar vencimientos, registrar abonos y visualizar recaudos pendientes.",
+    modules: ["Ventas", "Facturas", "Abonos", "Vencimientos", "Estados de cartera"],
+    benefits: ["Cartera visible", "Cobros más oportunos", "Menos errores manuales", "Mejor control de recaudo"],
+    technologies: ["Aplicación web", "Base de datos", "Alertas", "Reportes financieros"],
+    description: "Gestiona ventas, facturas, abonos, vencimientos y cartera pendiente en un solo lugar.",
+    evidenceIntro: "Visualización propuesta para control de ventas, facturas y cartera.",
+    color: "f59e0b"
+  },
+  {
+    id: "product-automatizacion",
+    title: "Automatización de procesos empresariales",
+    sector: "Procesos internos y operación administrativa",
+    category: ["gestion", "operacion"],
+    badge: "Automatización",
+    problem: "Tareas repetitivas, aprobaciones, registros y controles consumen tiempo y dependen de seguimiento manual.",
+    solution: "Flujos digitales para asignar responsables, controlar estados, automatizar pasos, reducir reprocesos y dejar trazabilidad.",
+    modules: ["Flujos de trabajo", "Aprobaciones", "Estados", "Responsables", "Historial"],
+    benefits: ["Menos tareas manuales", "Mayor trazabilidad", "Procesos más rápidos", "Responsables claros"],
+    technologies: ["Workflow", "Automatización", "Roles", "Paneles de control"],
+    description: "Digitaliza tareas repetitivas, aprobaciones y controles internos para operar con mayor orden.",
+    evidenceIntro: "Visualización propuesta para automatización de procesos administrativos u operativos.",
+    color: "ef4e5a"
+  },
+  {
+    id: "product-indicadores",
+    title: "Tableros e indicadores de gestión",
+    sector: "Gerencia y toma de decisiones",
+    category: ["indicadores", "gestion"],
+    badge: "Analítica",
+    problem: "La información clave se revisa tarde, se consolida manualmente o no permite comparar el desempeño por área.",
+    solution: "Dashboard con métricas, indicadores, alertas y vistas ejecutivas para tomar decisiones con información actualizada.",
+    modules: ["Indicadores", "Alertas", "Comparativos", "Filtros", "Reportes"],
+    benefits: ["Decisiones más rápidas", "Visibilidad gerencial", "Menos consolidación manual", "Seguimiento por área"],
+    technologies: ["Dashboard", "KPIs", "Reportes", "Integraciones"],
+    description: "Convierte datos operativos en tableros claros para seguimiento y toma de decisiones.",
+    evidenceIntro: "Visualización propuesta para tableros de control e indicadores gerenciales.",
+    color: "0ea5e9"
+  },
+  {
+    id: "product-citas",
+    title: "Sistema de gestión de citas",
+    sector: "Servicios, asesorías y atención programada",
+    category: ["servicio", "gestion"],
+    badge: "Agenda digital",
+    problem: "Las solicitudes de cita llegan por varios canales y se pierde control sobre disponibilidad, confirmaciones y seguimiento.",
+    solution: "Sistema para recibir solicitudes, capturar datos obligatorios, asignar disponibilidad, confirmar citas y hacer seguimiento.",
+    modules: ["Formulario de solicitud", "Agenda", "Confirmaciones", "Estados", "Historial"],
+    benefits: ["Citas organizadas", "Menos mensajes dispersos", "Datos completos", "Seguimiento claro"],
+    technologies: ["Formulario web", "Base de datos", "Notificaciones", "Panel administrativo"],
+    description: "Recibe, organiza y gestiona solicitudes de cita desde un flujo digital claro.",
+    evidenceIntro: "Visualización propuesta para recepción y control de solicitudes de cita.",
+    color: "22c55e"
+  },
+  {
+    id: "product-pqrs",
+    title: "Sistema de PQRS y servicio al cliente",
+    sector: "Atención, soporte y calidad",
+    category: ["servicio", "gestion"],
+    badge: "Servicio al cliente",
+    problem: "Peticiones, quejas, reclamos y solicitudes quedan sin trazabilidad, responsable o tiempo de respuesta controlado.",
+    solution: "Plataforma para registrar casos, clasificarlos, asignar responsables, controlar tiempos y consultar historial de atención.",
+    modules: ["Radicación", "Clasificación", "Responsables", "Estados", "SLA"],
+    benefits: ["Casos trazables", "Mejor respuesta", "Responsables definidos", "Historial de atención"],
+    technologies: ["Mesa de ayuda", "Alertas", "Base de datos", "Reportes"],
+    description: "Controla PQRS, casos de soporte, tiempos de respuesta y trazabilidad de atención.",
+    evidenceIntro: "Visualización propuesta para gestión de PQRS y servicio al cliente.",
+    color: "06b6d4"
+  },
+  {
+    id: "product-documental",
+    title: "Sistema de gestión documental",
+    sector: "Administración, legal y operaciones",
+    category: ["gestion"],
+    badge: "Documentos",
+    problem: "Los documentos, versiones, responsables y aprobaciones están dispersos o no tienen un control claro.",
+    solution: "Repositorio digital con clasificación, búsqueda, control de versiones, responsables y flujos de aprobación.",
+    modules: ["Repositorio", "Versiones", "Aprobaciones", "Búsqueda", "Permisos"],
+    benefits: ["Documentos centralizados", "Búsqueda rápida", "Control de versiones", "Aprobaciones trazables"],
+    technologies: ["Gestión documental", "Roles", "Flujos", "Base de datos"],
+    description: "Organiza documentos, versiones, aprobaciones y permisos en una estructura controlada.",
+    evidenceIntro: "Visualización propuesta para control documental empresarial.",
+    color: "8b5cf6"
+  },
+  {
+    id: "product-tareas-proyectos",
+    title: "Sistema de control de tareas y proyectos",
+    sector: "Equipos, proyectos y operación",
+    category: ["gestion", "operacion"],
+    badge: "Productividad",
+    problem: "Los compromisos, tareas, responsables y avances se gestionan sin visibilidad compartida.",
+    solution: "Herramienta para crear proyectos, asignar tareas, controlar prioridades, fechas, estados y cumplimiento.",
+    modules: ["Proyectos", "Tareas", "Responsables", "Prioridades", "Calendario"],
+    benefits: ["Mayor seguimiento", "Responsables claros", "Menos retrasos", "Visibilidad del avance"],
+    technologies: ["Kanban", "Calendario", "Notificaciones", "Reportes"],
+    description: "Administra tareas, responsables, fechas y avances de proyectos o actividades internas.",
+    evidenceIntro: "Visualización propuesta para control de tareas y proyectos.",
+    color: "14b8a6"
+  },
+  {
+    id: "product-compras-proveedores",
+    title: "Sistema de compras y proveedores",
+    sector: "Compras, abastecimiento e inventarios",
+    category: ["operacion", "inventarios"],
+    badge: "Abastecimiento",
+    problem: "Las solicitudes de compra, cotizaciones, aprobaciones y proveedores no tienen seguimiento centralizado.",
+    solution: "Sistema para gestionar requisiciones, proveedores, órdenes de compra, aprobaciones y trazabilidad de abastecimiento.",
+    modules: ["Requisiciones", "Proveedores", "Cotizaciones", "Órdenes", "Aprobaciones"],
+    benefits: ["Compras ordenadas", "Mejor control de proveedores", "Menos compras urgentes", "Historial trazable"],
+    technologies: ["Flujos de aprobación", "Base de datos", "Reportes", "Roles"],
+    description: "Controla solicitudes, proveedores, cotizaciones y órdenes de compra con trazabilidad.",
+    evidenceIntro: "Visualización propuesta para compras y gestión de proveedores.",
+    color: "f97316"
+  },
+  {
+    id: "product-talento-humano",
+    title: "Sistema de talento humano básico",
+    sector: "Gestión humana y administración",
+    category: ["talento", "gestion"],
+    badge: "Talento humano",
+    problem: "La información de colaboradores, novedades, documentos y solicitudes internas se controla de forma dispersa.",
+    solution: "Herramienta para centralizar colaboradores, documentos, novedades, solicitudes y reportes básicos de gestión humana.",
+    modules: ["Colaboradores", "Documentos", "Novedades", "Solicitudes", "Reportes"],
+    benefits: ["Información centralizada", "Menos tareas manuales", "Mejor seguimiento", "Historial por colaborador"],
+    technologies: ["Aplicación web", "Roles", "Formularios", "Base de datos"],
+    description: "Organiza colaboradores, novedades, documentos y solicitudes internas en una sola plataforma.",
+    evidenceIntro: "Visualización propuesta para gestión básica de talento humano.",
+    color: "ec4899"
+  },
+  {
+    id: "product-mantenimiento",
+    title: "Sistema de mantenimiento preventivo",
+    sector: "Equipos, activos y operación técnica",
+    category: ["operacion"],
+    badge: "Mantenimiento",
+    problem: "Los mantenimientos se programan tarde, no hay historial por equipo o se dificulta anticipar fallas.",
+    solution: "Sistema para registrar activos, programar mantenimientos, asignar responsables y consultar historial técnico.",
+    modules: ["Activos", "Cronogramas", "Órdenes", "Responsables", "Historial"],
+    benefits: ["Menos paradas inesperadas", "Mantenimientos programados", "Historial técnico", "Mayor control operativo"],
+    technologies: ["Agenda", "Alertas", "Base de datos", "Reportes"],
+    description: "Programa mantenimientos, controla activos y consulta historial técnico por equipo.",
+    evidenceIntro: "Visualización propuesta para mantenimiento preventivo de activos.",
+    color: "64748b"
+  },
+  {
+    id: "product-produccion",
+    title: "Sistema de control de producción",
+    sector: "Manufactura y procesos productivos",
+    category: ["operacion", "inventarios"],
+    badge: "Producción",
+    problem: "La producción, consumos, órdenes y avances no se conectan con inventarios ni con la planeación operativa.",
+    solution: "Plataforma para registrar órdenes de producción, consumos de materiales, etapas, responsables y resultados.",
+    modules: ["Órdenes", "Etapas", "Consumos", "Responsables", "Resultados"],
+    benefits: ["Producción trazable", "Consumos controlados", "Mejor planeación", "Menos reprocesos"],
+    technologies: ["Aplicación web", "Inventarios", "Reportes", "Trazabilidad"],
+    description: "Controla órdenes, etapas, consumos y avances de producción con conexión operativa.",
+    evidenceIntro: "Visualización propuesta para control de producción.",
+    color: "10b981"
+  },
+  {
+    id: "product-reservas",
+    title: "Sistema de reservas",
+    sector: "Servicios, espacios y disponibilidad",
+    category: ["servicio", "ventas"],
+    badge: "Reservas",
+    problem: "La disponibilidad, reservas, cancelaciones y confirmaciones se gestionan por mensajes o agendas separadas.",
+    solution: "Sistema para administrar disponibilidad, reservas, clientes, estados, confirmaciones y cambios.",
+    modules: ["Disponibilidad", "Reservas", "Clientes", "Confirmaciones", "Estados"],
+    benefits: ["Reservas ordenadas", "Menos cruces de agenda", "Mejor experiencia del cliente", "Historial claro"],
+    technologies: ["Calendario", "Formulario", "Notificaciones", "Panel administrativo"],
+    description: "Gestiona reservas, disponibilidad, clientes y confirmaciones desde una agenda digital.",
+    evidenceIntro: "Visualización propuesta para sistema de reservas.",
+    color: "38bdf8"
+  },
+  {
+    id: "product-reportes",
+    title: "Sistema de reportes automáticos",
+    sector: "Gerencia, administración y operación",
+    category: ["indicadores", "gestion"],
+    badge: "Reportes",
+    problem: "Los reportes se arman manualmente, llegan tarde o requieren consolidar información desde varias fuentes.",
+    solution: "Herramienta para generar reportes periódicos, filtrar información, exportar resultados y automatizar entregas.",
+    modules: ["Reportes", "Filtros", "Exportaciones", "Programación", "Historial"],
+    benefits: ["Menos consolidación manual", "Reportes oportunos", "Datos comparables", "Mayor control"],
+    technologies: ["Automatización", "Exportación", "Dashboards", "Base de datos"],
+    description: "Automatiza reportes periódicos, filtros, exportaciones y seguimiento de información clave.",
+    evidenceIntro: "Visualización propuesta para generación de reportes automáticos.",
+    color: "2563eb"
+  },
+  {
+    id: "product-encuestas",
+    title: "Sistema de encuestas y formularios inteligentes",
+    sector: "Servicio, calidad, investigación y diagnóstico",
+    category: ["servicio", "indicadores"],
+    badge: "Formularios",
+    problem: "Los formularios capturan datos, pero no siempre clasifican respuestas, generan resultados o facilitan seguimiento.",
+    solution: "Sistema de formularios con lógica condicional, clasificación de respuestas, resultados y reportes automáticos.",
+    modules: ["Formularios", "Lógica condicional", "Resultados", "Alertas", "Reportes"],
+    benefits: ["Datos mejor estructurados", "Resultados automáticos", "Menos revisión manual", "Seguimiento por respuesta"],
+    technologies: ["Formularios", "Automatización", "Analítica", "Base de datos"],
+    description: "Crea encuestas y formularios con lógica, resultados, clasificación y reportes automáticos.",
+    evidenceIntro: "Visualización propuesta para encuestas y formularios inteligentes.",
+    color: "a855f7"
+  },
+  {
+    id: "product-academica",
+    title: "Sistema de gestión académica",
+    sector: "Educación, formación y capacitación",
+    category: ["talento", "gestion"],
+    badge: "Académico",
+    problem: "Estudiantes, cursos, asistencia, evaluaciones y comunicaciones se gestionan en varios archivos o canales.",
+    solution: "Sistema para administrar estudiantes, cursos, asistencia, evaluaciones, certificados y seguimiento académico.",
+    modules: ["Estudiantes", "Cursos", "Asistencia", "Evaluaciones", "Certificados"],
+    benefits: ["Información académica centralizada", "Seguimiento por estudiante", "Menos trabajo manual", "Reportes claros"],
+    technologies: ["Aplicación web", "Formularios", "Reportes", "Roles"],
+    description: "Administra estudiantes, cursos, asistencia, evaluaciones y certificados en una sola herramienta.",
+    evidenceIntro: "Visualización propuesta para gestión académica.",
+    color: "0f766e"
+  },
+  {
+    id: "product-contratos",
+    title: "Sistema de control de contratos",
+    sector: "Legal, administración y gestión comercial",
+    category: ["gestion", "cartera"],
+    badge: "Contratos",
+    problem: "Los contratos, vencimientos, responsables, documentos y renovaciones no se monitorean oportunamente.",
+    solution: "Sistema para registrar contratos, controlar fechas, estados, documentos, renovaciones y alertas de vencimiento.",
+    modules: ["Contratos", "Vencimientos", "Documentos", "Renovaciones", "Alertas"],
+    benefits: ["Menos vencimientos olvidados", "Documentos centralizados", "Renovaciones controladas", "Seguimiento legal"],
+    technologies: ["Gestión documental", "Alertas", "Base de datos", "Reportes"],
+    description: "Controla contratos, documentos, vencimientos, renovaciones y responsables con alertas.",
+    evidenceIntro: "Visualización propuesta para control de contratos.",
+    color: "dc2626"
+  },
+  {
+    id: "product-pagos-recaudos",
+    title: "Sistema de pagos y recaudos",
+    sector: "Finanzas, cartera y operación comercial",
+    category: ["cartera", "ventas"],
+    badge: "Recaudos",
+    problem: "Los pagos, comprobantes, conciliaciones y estados de recaudo se controlan manualmente o con baja visibilidad.",
+    solution: "Herramienta para registrar pagos, asociar comprobantes, consultar estados, conciliar recaudos y generar reportes.",
+    modules: ["Pagos", "Comprobantes", "Conciliación", "Estados", "Reportes"],
+    benefits: ["Recaudos controlados", "Comprobantes organizados", "Conciliación más rápida", "Estados claros"],
+    technologies: ["Aplicación web", "Reportes", "Base de datos", "Integraciones"],
+    description: "Registra pagos, comprobantes, conciliaciones y reportes de recaudo desde una sola vista.",
+    evidenceIntro: "Visualización propuesta para control de pagos y recaudos.",
+    color: "16a34a"
+  },
+  {
+    id: "product-indicadores-comerciales",
+    title: "Sistema de seguimiento de indicadores comerciales",
+    sector: "Ventas, gerencia comercial y crecimiento",
+    category: ["ventas", "indicadores"],
+    badge: "KPIs comerciales",
+    problem: "Las metas, conversiones, oportunidades y desempeño comercial no se revisan con suficiente frecuencia o detalle.",
+    solution: "Dashboard comercial para medir metas, ventas, conversiones, oportunidades, seguimiento por asesor y alertas.",
+    modules: ["Metas", "Ventas", "Conversión", "Asesores", "Alertas"],
+    benefits: ["Metas visibles", "Mejor seguimiento comercial", "Decisiones rápidas", "Alertas tempranas"],
+    technologies: ["Dashboard", "KPIs", "CRM", "Reportes"],
+    description: "Mide ventas, metas, conversiones y desempeño comercial con indicadores claros.",
+    evidenceIntro: "Visualización propuesta para indicadores comerciales.",
+    color: "f43f5e"
+  }
+];
+
 const diagnosticOptions = [
   { score: 0, label: "No se realiza", description: "No existe un proceso definido, responsable o herramienta para controlarlo." },
   { score: 1, label: "Se realiza manualmente", description: "Depende de hojas de cálculo, documentos, mensajes o registros manuales." },
@@ -2133,6 +2441,83 @@ function createMockupSvg(project) {
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
 }
 
+function createProductVisualSvg(project, variant = 0) {
+  const safeTitle = escapeHtml(project.title);
+  const safeSector = escapeHtml(project.sector);
+  const modules = project.modules.slice(0, 5).map((item) => escapeHtml(item));
+  const color = project.color || "008cff";
+  const accent = variant === 1 ? "18cdb5" : variant === 2 ? "ffd447" : color;
+  const altAccent = variant === 1 ? color : "18cdb5";
+  const title = variant === 1 ? "Flujo operativo" : variant === 2 ? "Indicadores clave" : "Panel principal";
+  const cards = modules.map((item, index) => `
+    <rect x="82" y="${156 + index * 48}" width="210" height="34" rx="10" fill="#ffffff" fill-opacity="${index === variant ? ".16" : ".08"}"/>
+    <circle cx="106" cy="${173 + index * 48}" r="7" fill="#${index === variant ? accent : altAccent}"/>
+    <text x="124" y="${179 + index * 48}" fill="#d9ebff" font-family="Arial, sans-serif" font-size="14" font-weight="700">${item}</text>
+  `).join("");
+  const bars = [56, 94, 70, 118, 86, 132].map((height, index) => `
+    <rect x="${410 + index * 44}" y="${338 - height}" width="26" height="${height}" rx="6" fill="#${index % 2 ? accent : altAccent}" opacity="${index % 2 ? ".95" : ".78"}"/>
+  `).join("");
+  const flow = [0, 1, 2, 3].map((_, index) => `
+    <rect x="${384 + index * 130}" y="${150 + (index % 2) * 64}" width="94" height="54" rx="16" fill="#ffffff" fill-opacity=".09" stroke="#${index === variant ? accent : altAccent}" stroke-opacity=".5"/>
+    <text x="${431 + index * 130}" y="${182 + (index % 2) * 64}" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="13" font-weight="700">Paso ${index + 1}</text>
+  `).join("");
+  const svg = `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+      <defs>
+        <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#07182f"/>
+          <stop offset=".58" stop-color="#0b2745"/>
+          <stop offset="1" stop-color="#0a1024"/>
+        </linearGradient>
+        <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#102a4c"/>
+          <stop offset="1" stop-color="#173b66"/>
+        </linearGradient>
+        <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+          <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#020617" flood-opacity=".32"/>
+        </filter>
+      </defs>
+      <rect width="800" height="500" rx="28" fill="url(#bg)"/>
+      <circle cx="690" cy="72" r="150" fill="#${accent}" opacity=".14"/>
+      <circle cx="104" cy="416" r="130" fill="#${altAccent}" opacity=".10"/>
+      <rect x="46" y="42" width="708" height="416" rx="30" fill="url(#panel)" stroke="#ffffff" stroke-opacity=".14" filter="url(#softShadow)"/>
+      <rect x="46" y="42" width="708" height="56" rx="30" fill="#ffffff" fill-opacity=".05"/>
+      <circle cx="78" cy="70" r="7" fill="#ef4e5a"/><circle cx="102" cy="70" r="7" fill="#ffd447"/><circle cx="126" cy="70" r="7" fill="#18cdb5"/>
+      <text x="164" y="76" fill="#ffffff" font-family="Arial, sans-serif" font-size="18" font-weight="800">${safeTitle}</text>
+      <text x="720" y="76" text-anchor="end" fill="#9fc6e8" font-family="Arial, sans-serif" font-size="13">${safeSector}</text>
+      <rect x="72" y="124" width="242" height="286" rx="22" fill="#07182f" fill-opacity=".58" stroke="#ffffff" stroke-opacity=".08"/>
+      <text x="82" y="144" fill="#7dd3fc" font-family="Arial, sans-serif" font-size="13" font-weight="800">${title}</text>
+      ${cards}
+      <rect x="354" y="124" width="354" height="132" rx="24" fill="#ffffff" fill-opacity=".07"/>
+      ${flow}
+      <rect x="354" y="282" width="354" height="128" rx="24" fill="#ffffff" fill-opacity=".07"/>
+      ${bars}
+      <path d="M394 236 C448 190 512 238 566 192 S646 222 700 168" fill="none" stroke="#${accent}" stroke-width="8" stroke-linecap="round" opacity=".86"/>
+      <text x="378" y="392" fill="#d9ebff" font-family="Arial, sans-serif" font-size="14" font-weight="700">Visualización funcional propuesta</text>
+    </svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+}
+
+function getProjectVisuals(project) {
+  if (project.screenshots?.length) return project.screenshots;
+  return [
+    { src: createProductVisualSvg(project, 0), title: "Vista general", caption: `Panel principal propuesto para ${project.title}.` },
+    { src: createProductVisualSvg(project, 1), title: "Flujo de trabajo", caption: "Organización de módulos, estados y responsables de la solución." },
+    { src: createProductVisualSvg(project, 2), title: "Indicadores", caption: "Resumen visual de métricas, alertas y seguimiento operativo." }
+  ];
+}
+
+function getPortfolioItems() {
+  return [
+    ...projects.filter((project) => !["project-dashboard", "project-tasks"].includes(project.id)),
+    ...productCatalog
+  ];
+}
+
+function findPortfolioItem(projectId) {
+  return getPortfolioItems().find((item) => item.id === projectId);
+}
+
 function findSolution(id) {
   return solutions.find((solution) => solution.id === id);
 }
@@ -2186,22 +2571,26 @@ function renderSolutions() {
 }
 
 function renderProjects() {
-  const visibleProjects = projects.filter((project) => !["project-dashboard", "project-tasks"].includes(project.id));
-  const cardsMarkup = visibleProjects.map((project) => `
-    <article class="project-card reveal" data-categories="${project.category.join(" ")}">
-      <div class="project-visual">
-        <span class="project-badge">${project.screenshots?.length ? "Evidencia visual" : "Vista de solución"} · ${project.badge}</span>
-        <img class="${project.screenshots?.length ? 'project-evidence-cover' : ''}" src="${project.screenshots?.[0]?.src || createMockupSvg(project)}" alt="${project.screenshots?.length ? `Captura del sistema ${project.title}: ${project.screenshots[0].title}` : `Vista de la solución ${project.title}`}" loading="lazy" width="800" height="500">
-      </div>
-      <div class="project-content">
-        <span class="project-sector">${project.sector}</span>
-        <h3>${project.title}</h3>
-        <p>${project.description}</p>
-        <div class="project-tags">${project.technologies.slice(0, 4).map((tech) => `<span>${tech}</span>`).join("")}</div>
-        <button class="btn btn-outline btn-sm" type="button" data-project-id="${project.id}">Ver proyecto</button>
-      </div>
-    </article>
-  `).join("");
+  const visibleProjects = getPortfolioItems();
+  const cardsMarkup = visibleProjects.map((project) => {
+    const visuals = getProjectVisuals(project);
+    const hasRealEvidence = Boolean(project.screenshots?.length);
+    return `
+      <article class="project-card reveal" data-categories="${project.category.join(" ")}">
+        <div class="project-visual">
+          <span class="project-badge">${hasRealEvidence ? "Evidencia visual" : "Visualización"} · ${project.badge}</span>
+          <img class="${hasRealEvidence ? 'project-evidence-cover' : ''}" src="${visuals[0].src}" alt="${hasRealEvidence ? `Captura del sistema ${project.title}: ${visuals[0].title}` : `Visualización propuesta de ${project.title}`}" loading="lazy" width="800" height="500">
+        </div>
+        <div class="project-content">
+          <span class="project-sector">${project.sector}</span>
+          <h3>${project.title}</h3>
+          <p>${project.description}</p>
+          <div class="project-tags">${project.technologies.slice(0, 4).map((tech) => `<span>${tech}</span>`).join("")}</div>
+          <button class="btn btn-outline btn-sm" type="button" data-project-id="${project.id}">Ver producto</button>
+        </div>
+      </article>
+    `;
+  }).join("");
 
   const bannerMarkup = `
     <article class="project-card project-banner-card reveal" data-categories="inventarios ventas gestion software-medida">
@@ -2588,11 +2977,13 @@ function openSolutionModal(solutionId) {
 }
 
 function openProjectModal(projectId) {
-  const project = projects.find((item) => item.id === projectId);
+  const project = findPortfolioItem(projectId);
   if (!project) return;
+  const visuals = getProjectVisuals(project);
+  const hasRealEvidence = Boolean(project.screenshots?.length);
 
   elements.modalContent.innerHTML = `
-    <span class="modal-kicker">Proyecto destacado · ${project.badge}</span>
+    <span class="modal-kicker">${hasRealEvidence ? "Proyecto con evidencia" : "Producto del catálogo"} · ${project.badge}</span>
     <h2 id="modalTitle">${project.title}</h2>
     <p class="modal-summary"><strong>Sector:</strong> ${project.sector}. Solución orientada a visualizar el alcance funcional, los módulos y los beneficios para la operación empresarial.</p>
     <div class="modal-grid">
@@ -2617,29 +3008,27 @@ function openProjectModal(projectId) {
         <ul class="modal-tech">${project.technologies.map((item) => `<li>${item}</li>`).join("")}</ul>
       </section>
     </div>
-    ${project.screenshots?.length ? `
-      <div class="evidence-heading">
-        <div>
-          <h3>${iconMarkup("fa-images")} Evidencias visuales del desarrollo</h3>
-          <p>${project.evidenceIntro || "Capturas funcionales de los principales módulos implementados en la solución."}</p>
-        </div>
-        <span class="evidence-count">${project.screenshots.length} capturas</span>
+    <div class="evidence-heading">
+      <div>
+        <h3>${iconMarkup("fa-images")} ${hasRealEvidence ? "Evidencias visuales del desarrollo" : "Visualización propuesta del producto"}</h3>
+        <p>${project.evidenceIntro || "Vistas funcionales de referencia para comunicar el alcance del producto."}</p>
       </div>
-      <div class="evidence-gallery ${project.screenshots.length >= 4 ? "evidence-gallery--balanced" : ""}">
-        ${project.screenshots.map((shot, index) => `
-          <figure class="evidence-card">
-            <button class="evidence-image-button" type="button" data-evidence-image="${index}" aria-label="Ampliar ${shot.title}">
-              <img src="${shot.src}" alt="${shot.title} del sistema ${project.title}" loading="lazy">
-            </button>
-            <figcaption class="evidence-caption">
-              <strong>${shot.title}</strong>
-              <span>${shot.caption}</span>
-            </figcaption>
-          </figure>
-        `).join("")}
-      </div>
-      <p class="evidence-note">Estas imágenes documentan la interfaz desarrollada y el alcance funcional del proyecto.</p>
-    ` : ""}
+      <span class="evidence-count">${visuals.length} ${hasRealEvidence ? "capturas" : "vistas"}</span>
+    </div>
+    <div class="evidence-gallery ${visuals.length >= 4 ? "evidence-gallery--balanced" : ""}">
+      ${visuals.map((shot, index) => `
+        <figure class="evidence-card">
+          <button class="evidence-image-button" type="button" data-evidence-image="${index}" aria-label="Ampliar ${shot.title}">
+            <img src="${shot.src}" alt="${shot.title} del sistema ${project.title}" loading="lazy">
+          </button>
+          <figcaption class="evidence-caption">
+            <strong>${shot.title}</strong>
+            <span>${shot.caption}</span>
+          </figcaption>
+        </figure>
+      `).join("")}
+    </div>
+    <p class="evidence-note">${hasRealEvidence ? "Estas imágenes documentan la interfaz desarrollada y el alcance funcional del proyecto." : "Estas imágenes son una visualización de referencia para mostrar cómo podría verse el producto al adaptarlo a una empresa."}</p>
     <div class="modal-actions">
       <a class="btn btn-primary" href="#contacto" data-close-modal>Solicitar un proyecto similar</a>
       <button class="btn btn-outline" type="button" data-close-modal>Cerrar</button>
